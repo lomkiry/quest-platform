@@ -1,11 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Health } from './services/health/health';
+import { Topbar } from "./layout/topbar/topbar";
+import { Footbar } from "./layout/footbar/footbar";
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Topbar, Footbar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
