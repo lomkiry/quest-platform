@@ -32,10 +32,25 @@ public class AuthController {
         @NotBlank
         String password
     ) {}
+
+    public record LoginRequest(
+        @NotBlank
+        String usernameOrEmail,
+
+        @NotBlank
+        String password
+    ) {}
+
     
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public void registerUser(@Valid @RequestBody AuthRequest request) {
         authService.registerUser(request.username(), request.email(), request.password());
     } 
+
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public HttpStatus loginUser(@Valid @RequestBody LoginRequest request) {
+        return authService.loginUser(request.usernameOrEmail(), request.password());
+    }
 }
