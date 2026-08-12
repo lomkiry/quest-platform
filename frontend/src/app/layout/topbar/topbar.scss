@@ -15,3 +15,40 @@
   display: flex;
   gap: 12px;
 }
+
+/* Темный полупрозрачный фон на весь экран */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Затемнение фона */
+  backdrop-filter: blur(4px); /* Размытие фона (по желанию) */
+  
+  /* Выравнивание содержимого ровно по центру экрана */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  z-index: 9999; /* Чтобы перекрыть вообще весь контент страницы и шапку */
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Сам контейнер формы */
+.modal-content {
+  position: relative;
+  z-index: 10000;
+  animation: scaleUp 0.2s ease-out;
+}
+
+/* Анимации появления (по желанию) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

@@ -21,6 +21,17 @@
   <div class="actions">
     <button>Notifications</button>
     <button>Profile</button>
+
+
+  <button type="button" (click)="toggle()">Register / Login</button>
   </div>
+
+@if (isOpen()) {
+  <div class="modal-overlay" (click)="toggle()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-union-auth></app-union-auth>
+    </div>
+  </div>
+}
 
 </header>
