@@ -19,19 +19,23 @@
   </nav>
 
   <div class="actions">
-    <button>Notifications</button>
-    <button>Profile</button>
+    <button type="button" (click)="openAuth('login')">
+      Login
+    </button>
 
-
-  <button type="button" (click)="toggle()">Register / Login</button>
+    <button type="button" (click)="openAuth('register')">
+      Register
+    </button>
   </div>
 
-@if (isOpen()) {
-  <div class="modal-overlay" (click)="toggle()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <app-union-auth></app-union-auth>
+  @if (isOpen()) {
+    <div class="modal-overlay" (click)="closeAuth()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <app-auth-form
+          [mode]="authMode()">
+        </app-auth-form>
+      </div>
     </div>
-  </div>
-}
+  }
 
 </header>

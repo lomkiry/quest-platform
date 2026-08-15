@@ -6,6 +6,6 @@ export class Health {
     private http = inject(HttpClient)
 
     check() {
-        return this.http.get('http://localhost:8080/actuator/health');
+        return this.http.get('/actuator/health');
     }
 }

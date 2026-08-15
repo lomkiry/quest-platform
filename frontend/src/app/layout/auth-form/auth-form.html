@@ -1,0 +1,84 @@
+<div class="auth-form">
+
+  <div class="auth-tabs">
+
+    <button
+      type="button"
+      [class.active]="mode() === 'login'"
+      (click)="setMode('login')">
+      Login
+    </button>
+
+    <button
+      type="button"
+      [class.active]="mode() === 'register'"
+      (click)="setMode('register')">
+      Register
+    </button>
+
+  </div>
+
+  @if (mode() === 'login') {
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-header">
+        <h2>Welcome back</h2>
+        <p>Log in to continue your journey.</p>
+      </div>
+
+      <input
+        type="email"
+        placeholder="Username or Email"
+        formControlName="username_or_email"
+      >
+
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      >
+
+      <button type="submit">
+        Login
+      </button>
+    </form>
+
+  } @else {
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="form-header">
+        <h2>Create account</h2>
+        <p>Start your quest today.</p>
+      </div>
+
+      <input
+        type="text"
+        placeholder="Username"
+        formControlName="username"
+      >
+
+      <input
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+      >
+
+      <input
+        type="password"
+        placeholder="Password"
+      >
+
+      <input
+        type="password"
+        placeholder="Confirm password"
+        formControlName="password"
+      >
+
+      <button type="submit">
+        Register
+      </button>
+    </form>
+
+  }
+
+</div>

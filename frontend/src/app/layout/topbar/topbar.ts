@@ -1,17 +1,24 @@
 import { Component, signal } from '@angular/core';
-import { UnionAuth } from '../auth-component/union-auth/union-auth';
+import { AuthForm } from '../auth-form/auth-form';
+
+type AuthMode = 'login' | 'register';
 
 @Component({
   selector: 'app-topbar',
-  imports: [UnionAuth],
+  imports: [AuthForm],
   templateUrl: './topbar.html',
   styleUrl: './topbar.scss',
 })
 export class Topbar {
   isOpen = signal(false);
+  authMode = signal<AuthMode>('login');
 
-  toggle() {
-    this.isOpen.update(v => !v);
-    console.log('isOpen signal:', this.isOpen());
+  openAuth(mode: AuthMode) {
+    this.authMode.set(mode);
+    this.isOpen.set(true);
+  }
+
+  closeAuth() {
+    this.isOpen.set(false);
   }
 }
